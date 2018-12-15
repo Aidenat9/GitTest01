@@ -1,4 +1,4 @@
-package tmgg.me.mygittest;
+﻿package tmgg.me.mygittest;
 
 /**
  * @author sunwei
@@ -8,6 +8,7 @@ package tmgg.me.mygittest;
  * <p>description:            </p>
  */
 public class User {
-    private String name ;
-    private int age;
+    private String name22 ;
+    private int age111;
+pri
 }
