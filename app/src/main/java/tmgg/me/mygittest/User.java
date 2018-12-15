@@ -14,4 +14,5 @@ public class User {
     // new branch dev.
     //1111111111
     //2222222222
+    //新的分支，修改bug，从v1.0来的。（通过tag找到v1.0然后新建分支，切换到分支，修改bug，在切换到dev，合并bug到dev即可。）
 }
