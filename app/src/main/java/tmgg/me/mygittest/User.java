@@ -8,4 +8,6 @@ package tmgg.me.mygittest;
  * <p>description:            </p>
  */
 public class User {
+    private String name ;
+    private int age;
 }
