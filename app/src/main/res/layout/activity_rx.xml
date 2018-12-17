@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tmgg.me.mygittest.rx.RxDemoActivity">
+
+
+    <Button
+        android:id="@+id/btn_noDoubleClick"
+        android:layout_width="300dp"
+        android:text="btn_noDoubleClick"
+        android:layout_height="44dp" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>
