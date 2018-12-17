@@ -1,4 +1,4 @@
-﻿package tmgg.me.mygittest;
+package tmgg.me.mygittest;
 
 /**
  * @author sunwei
