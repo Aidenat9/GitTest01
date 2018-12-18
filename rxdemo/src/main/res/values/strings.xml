@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RxDemo</string>
+    <string name="title_activity_navi_demo">NaviDemoActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

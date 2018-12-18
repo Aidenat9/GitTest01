@@ -41,4 +41,13 @@
         android:text="登录"
         style="@style/button_style_default" />
 
+    <Button
+        android:id="@+id/btn_lifecycle"
+        android:text="测试rxlifecycle"
+       style="@style/button_style_default"/>
+    <Button
+        android:text="naviActivity"
+        android:id="@+id/btn_navigation"
+        style="@style/button_style_default" />
+
 </LinearLayout>

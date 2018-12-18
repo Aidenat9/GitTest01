@@ -1,8 +1,13 @@
 package com.example.rxdemo;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,17 +22,17 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func2;
 
+
 public class RxDemosActivity extends AppCompatActivity {
 
-    private AppCompatButton mBtnThrottle;
     private static final String TAG = "tag";
-
-    private Observable<Void> verifyCodeObservable;
-
     private static int SECONDS = 20;
     EditText mEtPhone;
     EditText mEtPassword;
     Button mBtLogin;
+    private AppCompatButton mBtnThrottle;
+    private Observable<Void> verifyCodeObservable;
+    private Button mBtnLifecycle;
 
 
     @Override
@@ -43,9 +48,24 @@ public class RxDemosActivity extends AppCompatActivity {
         mEtPhone = findViewById(R.id.et_phone);
         mEtPassword = findViewById(R.id.et_password);
         mBtLogin = findViewById(R.id.bt_login);
+        mBtnLifecycle = findViewById(R.id.btn_lifecycle);
     }
 
     private void initListen() {
+        RxView.clicks(findViewById(R.id.btn_lifecycle)).throttleFirst(800, TimeUnit.MILLISECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        startActivity(new Intent(getBaseContext(), LifeCycleDemoActivity.class));
+                    }
+                });
+        RxView.clicks(findViewById(R.id.btn_navigation)).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getBaseContext(),NaviDemoActivity.class));
+            }
+        });
+
         // TODO: 2018/12/17 防止多次点击 2s.
 //        RxView.clicks(mBtnThrottle).throttleFirst(2, TimeUnit.SECONDS)
 //                .subscribe(new Action1<Void>() {
@@ -112,7 +132,7 @@ public class RxDemosActivity extends AppCompatActivity {
             @Override
             public Boolean call(CharSequence s, CharSequence s2) {
 
-                return s.length()==11&&s2.length()>=6;
+                return s.length() == 11 && s2.length() >= 6;
             }
         }).subscribe(new Action1<Boolean>() {
             @Override
@@ -120,15 +140,29 @@ public class RxDemosActivity extends AppCompatActivity {
                 RxView.enabled(mBtLogin).call(b);
             }
         });
-        RxView.clicks(mBtLogin).throttleFirst(1,TimeUnit.SECONDS)
+        RxView.clicks(mBtLogin).throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        Toast.makeText(getBaseContext(), "登录成功！" ,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "登录成功！", Toast.LENGTH_SHORT).show();
                     }
                 });
+        getLifecycle().addObserver(new LifecycleObserver() {
+            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+            public void onCreate() {
+                Log.e(TAG, "onCreate: ");
+            }
 
+            @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+            void onPause() {
+                Log.e(TAG, "onPause: ");
+            }
 
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            void onDestroy() {
+                Log.e(TAG, "onDestroy: ");
+            }
+        });
     }
 
 
