@@ -1,36 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:onClick="RxClick"
+        android:text="Rx" />
+
+    <tmgg.me.mygittest.LineargGradientTextView
+        android:id="@+id/lgtv"
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:onClick="RxClick"
-        android:layout_width="300dp"
-        android:text="Rx"
-        android:layout_height="44dp" />
-    <Button
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="44dp"
-        android:text="bigimage"
-        android:id="@+id/btn_bigImg"/>
-    <Button
-        android:id="@+id/btn_flatbuffer"
-        android:layout_width="200dp"
-        android:text="flatbuffer"
-        android:layout_height="44dp" />
+        android:text="天青色等烟雨,而我在等你,送你离开,千里之外,你是否还在?"
+        android:textColor="@android:color/tertiary_text_light"
+        android:textSize="28sp" />
 
 </LinearLayout>
