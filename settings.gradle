@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':rxdemo'
+include ':app', ':mylibrary', ':rxdemo', ':kotlindemo'

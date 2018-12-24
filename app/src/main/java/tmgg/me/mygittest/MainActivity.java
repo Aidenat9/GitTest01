@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_flatbuffer).setOnClickListener(v->{
             startActivity(new Intent(getBaseContext(), FlatBufferDemoActivity.class));
         });
+        findViewById(R.id.btn_rebound).setOnClickListener(v->{
+            startActivity(new Intent(getBaseContext(),ReboundActivity.class));
+        });
     }
 
     public void RxClick(View view) {

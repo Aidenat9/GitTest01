@@ -47,8 +47,9 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'com.github.ksoichiro:android-observablescrollview:1.6.0'
 
-    compile "com.android.support:support-v4:${cfgs.supportLibraryVersion}"
-    compile 'com.lzy.net:okrx2:2.0.2'
-
+    implementation "com.android.support:support-v4:${cfgs.supportLibraryVersion}"
+    implementation 'com.lzy.net:okrx2:2.0.2'
+    implementation 'com.facebook.rebound:rebound:0.3.8'
+    implementation 'com.tumblr:backboard:0.1.0'
 
 }
