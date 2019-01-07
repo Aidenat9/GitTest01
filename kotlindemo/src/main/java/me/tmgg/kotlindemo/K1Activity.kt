@@ -2,8 +2,12 @@ package me.tmgg.kotlindemo
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.LinearLayout.VERTICAL
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_k1.*
+import me.tmgg.kotlindemo.adapter.ForecastListAdapter
 
 class K1Activity : AppCompatActivity() {
 
@@ -15,12 +19,39 @@ class K1Activity : AppCompatActivity() {
 //        testWhile()
 //        testReturn()
 //        testLabel()
-        val person = Runoob("你好")
-        person.age = 21
-        println("${person.age}-------${person.name}----")
-        person.foo()
+//        val person = Runoob("你好")
+//        person.age = 21
+//        println("${person.age}-------${person.name}----")
+//        person.foo()
 //        val emptyc = EmptyConstructor()
 
+        initRecyclerView()
+//        async(){
+//            Request("https://www.baidu.com").run()
+//            uiThread { longToast("Request performed") }
+//        }
+    }
+
+    private val items = listOf(
+            "Mon 6/23 - Sunny - 31/17",
+            "Tue 6/24 - Foggy - 21/8",
+            "Wed 6/25 - Cloudy - 22/17",
+            "Thurs 6/26 - Rainy - 18/11",
+            "Fri 6/27 - Foggy - 21/10",
+            "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
+            "Sun 6/29 - Sunny - 20/7"
+    )
+    private fun initRecyclerView() {
+
+        forecast_list.layoutManager = LinearLayoutManager(this,VERTICAL,false)
+        forecast_list.adapter = ForecastListAdapter(
+                items,
+                object :ForecastListAdapter.OnItemClickListener{
+                    override fun invoke(item: String) {
+                        toast(item)
+                    }
+                }
+        )
     }
 
     private fun testLabel() {
@@ -33,11 +64,12 @@ class K1Activity : AppCompatActivity() {
 //            }
 //        }
         val ints = listOf(1,2,3,4,5,6)
-        ints.forEach lit@ {
-            //不加@lit，会直接从最外层方法直接return
-            if (it == 3)return@lit
-            println(it)
-        }
+//        ints.forEach lit@ {
+//            //不加@lit，会直接从最外层方法直接return
+//            if (it == 3)return@lit
+//            println(it)
+//        }
+        ints.forEach { println(it) }
     }
 
     private fun testReturn() {
@@ -69,4 +101,9 @@ class K1Activity : AppCompatActivity() {
             Log.e("K1Activity", "$index:$value")
         }
     }
+
+    fun toast(text:String,length:Int = text.length){
+        Toast.makeText(this,text,length).show()
+    }
+
 }
